@@ -52,7 +52,7 @@ function varuser(req, res) {
   console.log(a);
   //var b = _.filter(a, function(o) { return o.name.toLowerCase()=='ramu'.toLowerCase() ; });
   //var c = _.filter(b,function(i) { return  i.phone == '7888588047'});
-  var b = _.filter(a, function(o) { return o.address.toLowerCase().indexOf('BTM'.toLowerCase()) > -1 });
+  var b = _.filter(a, function(o) { return o.address.toLowerCase().indexOf('hsr'.toLowerCase()) > -1 });
   
   res.json(b);
 }
