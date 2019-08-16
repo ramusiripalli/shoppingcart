@@ -1,0 +1,188 @@
+swagger: "2.0"
+info:
+  version: "0.1.1"
+  title: Shopping Cart 2.0
+# during dev, should point to your local machine
+host: localhost:10010
+# basePath prefixes all resource paths 
+basePath: /
+# 
+schemes:
+  # tip: remove http to make production-grade
+  - http
+  - https
+# format of bodies a client can send (Content-Type)
+consumes:
+  - application/json
+# format of the responses to the client (Accepts)
+produces:
+  - application/json
+paths:
+  /login:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: app
+    post:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: login
+      parameters:
+        - name: data
+          in: body
+          description: The name of the person to whom to say hello
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/LoginRequest"
+    
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/LoginResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /logout:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: app
+    post:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: logout
+      parameters:
+        - name: data
+          in: body
+          description: The name of the person to whom to say hello
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/LogoutRequest"
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/LogoutResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"   
+  /dashboard:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: app
+    post:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: dashboard
+      parameters:
+        - name: data
+          in: body
+          description: The name of the person to whom to say hello
+          schema:
+            # a pointer to a definition
+           $ref: "#/definitions/dashboardRequest"
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/dashboardResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse" 
+  /varuser:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: app
+    post:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: varuser
+      parameters:
+        - name: data
+          in: body
+          description: The name of the person to whom to say hello
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/VaruserRequest"
+    
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/VaruserResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"          
+
+  /swagger:
+    x-swagger-pipe: swagger_raw
+# complex objects have schema definitions
+definitions:
+  
+  LoginRequest:
+    properties:
+      id:
+        type: string
+      password:
+        type: string
+  LoginResponse:
+    properties:
+      status:
+        type: string
+      message:
+        type: string      
+  LogoutRequest:
+    properties:
+      id:
+        type: string
+  LogoutResponse:
+    properties:
+      status:
+        type: string
+      message:
+        type: string      
+        
+  dashboardRequest:
+    properties:
+      inputDate:
+        type: string
+     
+  dashboardResponse:
+    properties:
+      status:
+        type: string
+      message:
+        type: string  
+     
+  VaruserResponse:
+    properties:
+      status:
+        type: string
+      message:
+        type: string
+  VaruserRequest:
+    properties:
+      name:
+        type: string
+      salary:
+        type: integer
+      phone:
+        type: string
+      address:
+        type: string
+     
+  ErrorResponse:
+    properties:
+      status:
+        type: string
+      message:
+        type: string        
+             
+

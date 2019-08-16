@@ -1,2 +1,1 @@
-# shoppingcart
-shopping cart repo
+# Skeleton project for Swagger
