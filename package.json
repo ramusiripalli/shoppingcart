@@ -8,11 +8,13 @@
   "license": "",
   "main": "app.js",
   "dependencies": {
+    "cassandra-driver": "^3.6.0",
     "express": "^4.12.3",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
     "postman": "^0.2.0",
-    "swagger-express-mw": "^0.1.0"
+    "swagger-express-mw": "^0.1.0",
+    "weather-js": "^2.0.0"
   },
   "devDependencies": {
     "should": "^7.1.0",

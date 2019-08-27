@@ -44,6 +44,33 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /user:
+    # binds a127 app logic to a route
+    x-swagger-router-controller: app
+    post:
+      description: Returns 'Hello' to the caller
+      # used as the method name of the controller
+      operationId: user
+      parameters:
+        - name: data
+          in: body
+          description: The name of the person to whom to say hello
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/userRequest"
+    
+      responses:
+        "200":
+          description: Success
+          schema:
+            # a pointer to a definition
+            $ref: "#/definitions/userResponse"
+        # responses may fall through to errors
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+            
   /logout:
     # binds a127 app logic to a route
     x-swagger-router-controller: app
@@ -132,12 +159,28 @@ definitions:
         type: string
       password:
         type: string
+      city:
+        type: string  
   LoginResponse:
     properties:
       status:
         type: string
       message:
+        type: string
+  userRequest:
+    properties:
+      id:
+        type: string
+      password:
+        type: string  
+     
+  userResponse:
+    properties:
+      status:
+        type: string
+      message:
         type: string      
+        
   LogoutRequest:
     properties:
       id:
